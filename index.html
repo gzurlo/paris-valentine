@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Valentine from Paris</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Twinkling stars background -->
+    <div class="stars" aria-hidden="true"></div>
+
+    <!-- Floating hearts -->
+    <div class="floating-hearts" aria-hidden="true"></div>
+
+    <!-- Countdown -->
+    <div class="countdown" id="countdown" aria-live="polite">
+        Paris Valentine's Day in: <span id="countdown-text">calculating...</span>
+    </div>
+
+    <!-- Eiffel Tower silhouette -->
+    <svg class="eiffel-tower" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg" aria-label="Eiffel Tower">
+        <path d="M50 10 L30 80 L20 200 L35 200 L40 120 L60 120 L65 200 L80 200 L70 80 Z" fill="currentColor" opacity="0.15"/>
+        <path d="M35 80 L65 80" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+        <path d="M38 120 L62 120" stroke="currentColor" stroke-width="1" opacity="0.15"/>
+    </svg>
+
+    <!-- Main postcard -->
+    <main class="postcard-container">
+        <article class="postcard">
+            <!-- Paris stamp badge -->
+            <div class="paris-stamp" aria-label="Paris postmark">
+                <div class="stamp-circle">
+                    <span class="stamp-text">PARIS</span>
+                    <span class="stamp-date">FÉV 14</span>
+                </div>
+            </div>
+
+            <header class="postcard-header">
+                <h1>✦ POSTCARD FROM PARIS ✦</h1>
+            </header>
+
+            <div class="letter-content">
+                <p class="salutation">Sophia,</p>
+                <p class="letter-text" id="letter-text"></p>
+                <button class="skip-btn" id="skip-btn" aria-label="Skip typewriter animation">Skip</button>
+                <p class="signature">— Gianluca</p>
+            </div>
+
+            <div class="question-section" id="question-section">
+                <p class="question">Sophia, will you be my Valentine in Paris?</p>
+                <div class="button-group">
+                    <button class="yes-btn" id="yes-heart" data-choice="YES 💖">
+                        YES 💖
+                    </button>
+                    <button class="yes-btn" id="yes-croissant" data-choice="YES 🥐">
+                        YES 🥐
+                    </button>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal">
+            <h2 id="modal-title">Oui oui! 💘 Paris is ours.</h2>
+            <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+        </div>
+    </div>
+
+    <!-- Canvas for heart burst -->
+    <canvas id="heart-canvas" aria-hidden="true"></canvas>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast" role="status" aria-live="polite">Saved 💾</div>
+
+    <script src="app.js"></script>
+</body>
+</html>

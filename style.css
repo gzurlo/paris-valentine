@@ -1,0 +1,483 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --paris-dusk-start: #2d1b3d;
+    --paris-dusk-mid: #4a2c5a;
+    --paris-dusk-end: #8b5a7d;
+    --cream: #faf5f0;
+    --rose-gold: #d4a5a5;
+    --deep-rose: #8b4465;
+    --gold: #d4af37;
+}
+
+body {
+    font-family: 'Georgia', 'Palatino', serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--paris-dusk-start) 0%, var(--paris-dusk-mid) 50%, var(--paris-dusk-end) 100%);
+    color: var(--cream);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Twinkling stars */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.stars::before,
+.stars::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow:
+        100px 150px white, 250px 80px white, 400px 200px white,
+        150px 50px white, 350px 120px white, 200px 180px white,
+        450px 90px white, 80px 220px white, 300px 40px white,
+        180px 140px white, 420px 160px white, 130px 100px white,
+        280px 190px white, 380px 70px white, 220px 130px white,
+        320px 170px white, 90px 60px white, 260px 210px white,
+        340px 30px white, 160px 110px white;
+    animation: twinkle 3s infinite alternate;
+}
+
+.stars::after {
+    animation-delay: 1.5s;
+    opacity: 0.6;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Floating hearts */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-hearts::before,
+.floating-hearts::after {
+    content: '💕';
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.2;
+    animation: float 15s infinite ease-in-out;
+}
+
+.floating-hearts::before {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.floating-hearts::after {
+    left: 70%;
+    animation-delay: 7s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.2;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Eiffel Tower silhouette */
+.eiffel-tower {
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    width: 80px;
+    height: 160px;
+    color: var(--cream);
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* Countdown */
+.countdown {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    z-index: 10;
+    text-align: center;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+#countdown-text {
+    font-weight: bold;
+    color: var(--rose-gold);
+}
+
+/* Postcard container */
+.postcard-container {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 100px 20px 40px;
+}
+
+.postcard {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    background: var(--cream);
+    color: #2d1b3d;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(212, 165, 165, 0.2);
+}
+
+/* Paris stamp */
+.paris-stamp {
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+}
+
+.stamp-circle {
+    width: 100%;
+    height: 100%;
+    border: 3px dashed var(--deep-rose);
+    border-radius: 50%;
+    background: var(--rose-gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(12deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.stamp-text {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.stamp-date {
+    font-size: 9px;
+    margin-top: 2px;
+}
+
+/* Postcard header */
+.postcard-header h1 {
+    text-align: center;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    color: var(--deep-rose);
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+/* Letter content */
+.letter-content {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.salutation {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.letter-text {
+    line-height: 1.8;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    min-height: 250px;
+    white-space: pre-line;
+}
+
+.skip-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: 1px solid var(--deep-rose);
+    color: var(--deep-rose);
+    padding: 5px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.skip-btn:hover {
+    background: var(--deep-rose);
+    color: var(--cream);
+}
+
+.skip-btn:focus {
+    outline: 2px solid var(--deep-rose);
+    outline-offset: 2px;
+}
+
+.skip-btn.hidden {
+    display: none;
+}
+
+.signature {
+    text-align: right;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Question section */
+.question-section {
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.question-section.visible {
+    opacity: 1;
+}
+
+.question {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--deep-rose);
+    font-style: italic;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.yes-btn {
+    background: var(--rose-gold);
+    color: var(--paris-dusk-start);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 68, 101, 0.3);
+    font-family: inherit;
+}
+
+.yes-btn:hover {
+    background: var(--deep-rose);
+    color: var(--cream);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 68, 101, 0.4);
+}
+
+.yes-btn:focus {
+    outline: 3px solid var(--deep-rose);
+    outline-offset: 3px;
+}
+
+.yes-btn:active {
+    transform: translateY(0);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal {
+    position: relative;
+    background: var(--cream);
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 400px;
+    animation: modalSlideIn 0.4s ease;
+}
+
+.modal h2 {
+    color: var(--deep-rose);
+    font-size: 1.8rem;
+    line-height: 1.5;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--deep-rose);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+    background: rgba(139, 68, 101, 0.1);
+}
+
+.modal-close:focus {
+    outline: 2px solid var(--deep-rose);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heart canvas */
+#heart-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99;
+}
+
+/* Toast notification */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--deep-rose);
+    color: var(--cream);
+    padding: 12px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 101;
+    font-size: 1rem;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .floating-hearts::before,
+    .floating-hearts::after,
+    .stars::before,
+    .stars::after {
+        animation: none;
+        opacity: 0.2;
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .postcard {
+        padding: 30px 25px;
+    }
+
+    .countdown {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .eiffel-tower {
+        width: 60px;
+        height: 120px;
+        right: 20px;
+    }
+
+    .letter-text {
+        font-size: 1rem;
+    }
+
+    .yes-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
